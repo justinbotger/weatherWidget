@@ -32,16 +32,18 @@
 
 <script setup lang="ts">
 import type { WeatherForecastResponse, WeatherDataDaily } from '@/types/apiResponseTypes';
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import WeatherIcon from './WeatherIcon.vue';
 import formatTemperature from '@/helpers/temperatureFormatter';
+
+const maxDaysAmount = ref(3);
 
 const props = defineProps<{
   weatherForecastData: WeatherForecastResponse
 }>();
 
 const weatherData = computed<WeatherDataDaily[]>(() => {
-  let days = props.weatherForecastData.timelines.daily.slice(0, 3) || [];
+  let days = props.weatherForecastData.timelines.daily.slice(0, maxDaysAmount.value) || [];
   days.forEach(day => {day.time = new Date(day.time).toLocaleDateString(undefined, { weekday: 'short' })})
   return days;
 })

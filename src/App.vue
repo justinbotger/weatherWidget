@@ -36,7 +36,7 @@ const errorMessage = ref<string | null>(null);
 function getWeatherData() {
   Promise.all([getRealTimeWeather(), getWeatherForecast()])
   .finally(() => {
-    isLoading.value = false; // Stop loading spinner once requests complete
+    isLoading.value = false;
   });
 }
 
@@ -77,7 +77,7 @@ function getUserLocation() {
         latitude: position.coords.latitude.toString(),
         longitude: position.coords.longitude.toString(),
       };
-      getWeatherData(); // Call the API after location is retrieved
+      getWeatherData();
     },
     (error) => {
       errorMessage.value = 'Unable to retrieve your location.';

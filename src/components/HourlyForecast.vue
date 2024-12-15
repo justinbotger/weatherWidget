@@ -10,16 +10,18 @@
 
 <script setup lang="ts">
 import type { WeatherForecastResponse, WeatherData } from '@/types/apiResponseTypes';
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import WeatherIcon from './WeatherIcon.vue';
 import formatTemperature from '@/helpers/temperatureFormatter';
+
+const hourRange = ref({min: 2, max: 9});
 
 const props = defineProps<{
   weatherForecastData: WeatherForecastResponse
 }>();
 
 const weatherData = computed<WeatherData[]>(() => {
-  let hours = props.weatherForecastData.timelines.hourly.slice(2, 9) || [];
+  let hours = props.weatherForecastData.timelines.hourly.slice(hourRange.value.min, hourRange.value.max) || [];
   hours.forEach(hour => {hour.time = new Date(hour.time).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })})
   return hours;
 })
