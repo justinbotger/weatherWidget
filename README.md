@@ -115,13 +115,29 @@ Shows weather predictions for upcoming days.
 
 A reusable loading spinner with combined pulse and rotation animations.
 
+### `WeatherIcon.vue`
+
+A reusable icon that displays the weather condition in recognisable ways.
+
 ### `helpers/apiErrorHandler.ts`
 
 Handles API errors gracefully by interpreting HTTP status codes and returning user-friendly error messages.
 
+### `helpers/temperatureFormatter.ts`
+
+Formats the temperature to the right locale and appends the temperature unit.
+
+### `helpers/weatherCodes.ts`
+
+Returns the right weather description based on the provided weather code.
+
 ### `services/apiClient.ts`
 
 A configured Axios instance for making API requests.
+
+### `types/apiResponseTypes.ts`
+
+Contains all types that represent the responses of Tomorrow's weather api.
 
 ## Error Handling
 

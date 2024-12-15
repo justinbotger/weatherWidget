@@ -1,5 +1,5 @@
 <template>
-  <img class="icon" :src="iconSource" :alt="getWeatherDescription(props.weatherCode, 'general')">
+  <img v-if="props.weatherCode" class="icon" :src="iconSource" :alt="getWeatherDescription(props.weatherCode, 'general')">
 </template>
 
 <script setup lang="ts">
@@ -11,8 +11,10 @@ const props = defineProps({
 })
 
 const iconSource = computed(() => {
-  const paddedCode = props.weatherCode.toString().padEnd(5, '0');
-  return `src/assets/tomorrow-icons/${paddedCode}.png`;
+  if(props.weatherCode) {
+    const paddedCode = props.weatherCode.toString().padEnd(5, '0');
+    return `src/assets/tomorrow-icons/${paddedCode}.png`;
+  }
 })
 
 </script>
