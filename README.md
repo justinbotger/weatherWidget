@@ -44,7 +44,7 @@ The Weather Widget is a responsive and accessible web-based application that fet
 - **TypeScript** for type safety and scalability
 - **Vite** for fast development and builds
 - **SCSS** for styling
-- **OpenWeatherMap API** for weather data (using a CORS proxy)
+- **Tomorrow's Weather API'** for weather data (using a CORS proxy)
 
 ## Project Setup
 
@@ -88,7 +88,7 @@ npm run build
 
 ## Weather Data
 
-This application fetches weather data from the [OpenWeatherMap API](https://openweathermap.org/api). Since the API does not provide CORS headers, a public CORS proxy service is used. Ensure the API key is configured in `apiClient` for successful requests.
+This application fetches weather data from the [Tomorrow's weather api'](https://www.tomorrow.io/weather-api/).
 
 ## Key Components
 
