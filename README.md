@@ -1,39 +1,151 @@
-# weather
+# Weather Widget
 
-This template should help get you started developing with Vue 3 in Vite.
+A modern weather widget built with Vue 3 and TypeScript, designed to provide real-time weather data and forecasts in the web browser. This project demonstrates code quality, extensibility, and usability while adhering to best practices in frontend development.
 
-## Recommended IDE Setup
+## Table of Contents
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- [Overview](#overview)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Project Setup](#project-setup)
+  - [Installation](#installation)
+  - [Running the Project](#running-the-project)
+  - [Linting and Type Checking](#linting-and-type-checking)
+  - [Building for Production](#building-for-production)
+- [Weather Data](#weather-data)
+- [Key Components](#key-components)
+- [Error Handling](#error-handling)
+- [Testing](#testing)
+- [Recommended IDE Setup](#recommended-ide-setup)
+- [Future Improvements](#future-improvements)
 
-## Type Support for `.vue` Imports in TS
+## Overview
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+The Weather Widget is a responsive and accessible web-based application that fetches and displays real-time weather data and forecasts for any specified location. It was developed as part of an assessment to showcase skills in:
 
-## Customize configuration
+- Frontend architecture
+- TypeScript integration with Vue 3
+- Error handling
+- Usability and visual appeal
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+## Features
+
+- **Real-Time Weather**: Displays the current weather conditions.
+- **Hourly and Daily Forecasts**: Provides weather predictions for upcoming hours and days.
+- **Loading State**: Displays a loading spinner while fetching data.
+- **Error State**: Shows meaningful error messages when API requests fail.
+- **Geolocation Support**: Automatically fetches the user's current location for weather updates.
+- **Reusable Components**: Built with a modular and reusable component structure.
+- **Accessible UI**: Designed with accessibility in mind.
+
+## Tech Stack
+
+- **Vue 3** with Composition API
+- **TypeScript** for type safety and scalability
+- **Vite** for fast development and builds
+- **SCSS** for styling
+- **OpenWeatherMap API** for weather data (using a CORS proxy)
 
 ## Project Setup
+
+### Installation
+
+Install project dependencies:
 
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+### Running the Project
+
+Start the development server:
 
 ```sh
 npm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
+### Linting and Type Checking
+
+Run ESLint to check for code issues:
+
+```sh
+npm run lint
+```
+
+Run TypeScript for type checking:
+
+```sh
+npm run type-check
+```
+
+### Building for Production
+
+Compile and minify the project for production:
 
 ```sh
 npm run build
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+## Weather Data
 
-```sh
-npm run lint
-```
+This application fetches weather data from the [OpenWeatherMap API](https://openweathermap.org/api). Since the API does not provide CORS headers, a public CORS proxy service is used. Ensure the API key is configured in `apiClient` for successful requests.
+
+## Key Components
+
+### `App.vue`
+
+The main application file that:
+- Fetches weather data from APIs.
+- Manages application state (loading, error messages, weather data).
+- Dynamically renders components based on the data.
+
+### `RealtimeWeather.vue`
+
+Displays real-time weather data such as temperature, humidity, and conditions.
+
+### `HourlyForecast.vue`
+
+Renders hourly weather forecasts.
+
+### `DailyForecast.vue`
+
+Shows weather predictions for upcoming days.
+
+### `LoadingIcon.vue`
+
+A reusable loading spinner with combined pulse and rotation animations.
+
+### `helpers/apiErrorHandler.ts`
+
+Handles API errors gracefully by interpreting HTTP status codes and returning user-friendly error messages.
+
+### `services/apiClient.ts`
+
+A configured Axios instance for making API requests.
+
+## Error Handling
+
+Error handling is implemented via a reusable `handleApiError` helper function. This function interprets HTTP status codes and returns appropriate error messages for display in the UI. For example:
+
+- **400**: "Invalid request. Please try again."
+- **401**: "Unauthorized. Check your API key."
+- **404**: "Location not found."
+- **500**: "Server error. Please try again later."
+
+## Recommended IDE Setup
+
+- [VSCode](https://code.visualstudio.com/) with the [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) extension (disable Vetur).
+- Optional: Install [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) for linting support.
+
+## Future Improvements
+
+Here are some potential improvements for this project:
+
+- **Caching**: Store weather data in local storage or IndexedDB for offline access.
+- **End-to-End Testing**: Add Cypress tests to verify user flows.
+- **Localization**: Support multiple languages.
+- **Unit Conversion**: Provide options for Fahrenheit/Celsius and imperial/metric units.
+- **Progressive Web App**: Convert the app into a PWA for better performance and offline capabilities.
+- **Enhanced Accessibility**: Add support for screen readers and keyboard navigation.
+
+---
