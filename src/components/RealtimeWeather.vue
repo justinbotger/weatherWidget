@@ -1,7 +1,7 @@
 <template>
   <div v-if="realtimeWeather">
     <div class="location">
-      {{ realtimeWeather.location.name }}
+      {{ realtimeWeather.location.name }} {{ date }}
     </div>
     <div class="realtime-info">
       <div class="realtime-info__temperature">
@@ -47,6 +47,14 @@ const props = defineProps<{
 
 const weatherDescription = computed(() => {
   return getWeatherDescription(props.realtimeWeather.data.values.weatherCode, "general");
+})
+
+const date = computed(() => {
+  return new Date().toLocaleDateString('en-GB', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  });
 })
 
 </script>
