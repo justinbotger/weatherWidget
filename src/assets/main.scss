@@ -1,0 +1,14 @@
+@import './base.scss';
+
+body {
+    background-image: url('@/assets/background.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.app-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100dvh;
+}
